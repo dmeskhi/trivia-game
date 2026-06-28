@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Living Gracefully Trivia</title>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">★</div>
+          <div>
+            <h1>Living Gracefully Trivia</h1>
+            <p class="subtitle">
+              A group-friendly quiz experience for assisted living activities.
+            </p>
+          </div>
+        </div>
+        <div class="toolbar" aria-label="Quick controls">
+          <button
+            class="secondary"
+            id="fontDown"
+            aria-label="Decrease font size"
+          >
+            A−
+          </button>
+          <button class="secondary" id="fontUp" aria-label="Increase font size">
+            A+
+          </button>
+          <button class="secondary" id="darkToggle">Dark Mode</button>
+          <button class="gold" id="presentationBtn">Presentation Mode</button>
+        </div>
+      </header>
+
+      <main class="grid">
+        <aside class="card" aria-label="Quiz settings">
+          <h2>Activity Setup</h2>
+
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="">Any Category</option>
+            <option value="9">General Knowledge</option>
+            <option value="11">Movies</option>
+            <option value="12">Music</option>
+            <option value="17">Science & Nature</option>
+            <option value="21">Sports</option>
+            <option value="22">Geography</option>
+            <option value="23">History</option>
+            <option value="24">Politics</option>
+            <option value="25">Art</option>
+            <option value="27">Animals</option>
+          </select>
+
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+
+          <div class="switch-row">
+            <strong>Read questions aloud</strong>
+            <input
+              id="ttsToggle"
+              type="checkbox"
+              checked
+              aria-label="Toggle text to speech"
+            />
+          </div>
+          <div class="switch-row">
+            <strong>Timer</strong>
+            <input id="timerToggle" type="checkbox" aria-label="Toggle timer" />
+          </div>
+          <div class="switch-row">
+            <strong>Team mode</strong>
+            <input
+              id="teamToggle"
+              type="checkbox"
+              checked
+              aria-label="Toggle team mode"
+            />
+          </div>
+
+          <label for="seconds">Timer Seconds</label>
+          <input id="seconds" type="number" min="10" max="120" value="30" />
+
+          <div class="controls two">
+            <button id="startBtn">Start Quiz</button>
+            <button class="secondary" id="resetBtn">Reset</button>
+          </div>
+
+          <section class="highscores" aria-label="High scores">
+            <h3>High Scores</h3>
+            <ol id="highScores"></ol>
+            <button class="secondary" id="clearScores">Clear Scores</button>
+          </section>
+        </aside>
+
+        <section class="quiz-card" aria-live="polite">
+          <div class="topline">
+            <span class="pill" id="progress">Question 0 / 10</span>
+            <span class="pill" id="categoryLabel">Ready</span>
+            <span class="pill timer hidden" id="timer">30</span>
+          </div>
+
+          <img
+            class="question-image"
+            id="questionImage"
+            alt="Question visual"
+          />
+          <h2 class="question" id="questionText">
+            Choose your settings, then start the quiz.
+          </h2>
+
+          <div class="answers" id="answers"></div>
+
+          <div class="message" id="message">
+            Keyboard tip: use 1, 2, 3, 4 to answer. Press S to show the answer.
+            Press N for next question.
+          </div>
+
+          <div class="team-board" id="teamBoard">
+            <div class="team active-team" id="teamA">
+              <strong>Team Sunshine</strong><span id="scoreA">0</span>
+            </div>
+            <div class="team" id="teamB">
+              <strong>Team Evergreen</strong><span id="scoreB">0</span>
+            </div>
+          </div>
+
+          <div class="controls three">
+            <button class="secondary" id="showAnswerBtn" disabled>
+              Show Correct Answer
+            </button>
+            <button class="success" id="nextBtn" disabled>Next Question</button>
+            <button class="danger" id="finishBtn">Finish Activity</button>
+          </div>
+        </section>
+      </main>
+      <footer class="copyright">
+        <p>
+          © <span id="currentYear"></span> Living Gracefully Trivia™. All Rights
+          Reserved.
+        </p>
+        <p>
+          Designed and Developed by
+          <a href="https://davidswebstudio.com/" target="_blank"
+            >David's Web Studio.</a
+          >
+        </p>
+        <!-- Another copyright text
+        <p class="small">
+          Trivia questions provided by the Open Trivia Database (OpenTDB). This
+          application is not affiliated with or endorsed by OpenTDB.
+        </p>
+        -->
+      </footer>
+
+      <script>
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
+      </script>
+    </div>
+  </body>
+</html>
